@@ -30,6 +30,7 @@ class MainActivity : ComponentActivity() {
         setContent {
 
             ExcelSyncTheme {
+
                 ExcelUploadScreen(
                     viewModel = viewModel,
                     onNavigateBack = { finish() }
