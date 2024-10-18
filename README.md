@@ -20,18 +20,33 @@ A specialized Android utility app built with Jetpack Compose that facilitates bu
 ## Dependencies 📦
 
 ```gradle
+//Will give error for sdks below 26
+minSdk = 26
 dependencies {
-    // Firebase
-    implementation platform('com.google.firebase:firebase-bom:32.7.0')
-    implementation 'com.google.firebase:firebase-database-ktx'
-    
-    // Jetpack Compose
-    implementation 'androidx.activity:activity-compose:1.8.2'
-    implementation 'androidx.compose.material3:material3'
-    
-    // Coroutines
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.7.3'
+
+    //POI Library
+    implementation(libs.poi)
+    implementation(libs.poi.ooxml)
+
+    //Firebase
+    implementation(libs.firebase.database)
+
+
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.activity.compose)
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.ui)
+    implementation(libs.androidx.ui.graphics)
+    implementation(libs.androidx.ui.tooling.preview)
+    implementation(libs.androidx.material3)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(platform(libs.androidx.compose.bom))
+    androidTestImplementation(libs.androidx.ui.test.junit4)
+    debugImplementation(libs.androidx.ui.tooling)
+    debugImplementation(libs.androidx.ui.test.manifest)
 }
 ```
 
