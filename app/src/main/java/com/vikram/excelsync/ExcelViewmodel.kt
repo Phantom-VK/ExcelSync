@@ -82,7 +82,7 @@ class ExcelToFirebaseUploader(
                             district = row.getCell(4)?.stringCellValue ?: "",
                             taluka = row.getCell(5)?.stringCellValue ?: "",
                             bloName = row.getCell(6)?.stringCellValue ?: "",
-                            bloContact = row.getCell(7)?.numericCellValue.toString() ?: ""
+                            bloContact = row.getCell(7)?.numericCellValue?.toLong().toString()
                         )
 
                         // Validate booth data
