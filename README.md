@@ -63,17 +63,6 @@ dependencies {
    - Download `google-services.json` and place it in the `app/` directory
    - Enable Realtime Database
 
-3. Database Rules:
-   ```json
-   {
-     "rules": {
-       "Cities": {
-         ".read": true,
-         ".write": "auth != null"
-       }
-     }
-   }
-   ```
 
 ## File Format 📝
 
