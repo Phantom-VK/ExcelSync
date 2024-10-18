@@ -53,8 +53,8 @@ android {
 dependencies {
 
     //POI Library
-    implementation("org.apache.poi:poi:5.3.0")
-    implementation("org.apache.poi:poi-ooxml:5.3.0")
+    implementation(libs.poi)
+    implementation(libs.poi.ooxml)
 
 
     implementation(libs.androidx.core.ktx)
