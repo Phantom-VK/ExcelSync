@@ -1,6 +1,6 @@
 # ExcelSync 📊
 
-A specialized Android utility app built with Jetpack Compose that facilitates bulk uploading of election booth data from Excel/CSV files to Firebase Realtime Database.
+A specialized Android utility app built with Jetpack Compose that facilitates bulk uploading of (in this project data is election booth data) data from Excel/CSV files to Firebase Realtime Database.
 
 ## Features 🌟
 
