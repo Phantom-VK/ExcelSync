@@ -1,39 +1,30 @@
+/**
+ * ExcelSync UI Components
+ *
+ * This file contains the Jetpack Compose UI implementation for the Excel upload screen
+ * and related components.
+ */
 package com.vikram.excelsync
 
 import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowForward
 import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material3.Button
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.LinearProgressIndicator
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
-
+/**
+ * Main screen for Excel file upload functionality
+ *
+ * @param viewModel ViewModel handling the upload logic
+ * @param onNavigateBack Callback for handling back navigation
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ExcelUploadScreen(
@@ -47,6 +38,7 @@ fun ExcelUploadScreen(
             .fillMaxSize()
             .padding(16.dp)
     ) {
+        // Top app bar with navigation
         TopAppBar(
             title = { Text("Upload Booth Data") },
             navigationIcon = {
@@ -56,7 +48,7 @@ fun ExcelUploadScreen(
             }
         )
 
-        // Instructions Card
+        // Instructions card showing required Excel format
         Card(
             modifier = Modifier
                 .fillMaxWidth()
@@ -83,7 +75,7 @@ fun ExcelUploadScreen(
             }
         }
 
-        // Upload Button
+        // File selection button
         Button(
             onClick = { showFilePicker = true },
             modifier = Modifier.fillMaxWidth()
@@ -93,7 +85,7 @@ fun ExcelUploadScreen(
             Text("Select Excel File")
         }
 
-        // Status Display
+        // Upload status display
         viewModel.uploadState.value.let { state ->
             when (state) {
                 is UploadState.Uploading -> {
@@ -119,12 +111,13 @@ fun ExcelUploadScreen(
                     )
                 }
                 UploadState.Idle -> {
-                    // No status to show
+                    // Initial state, no status to show
                 }
             }
         }
     }
 
+    // File picker launcher
     if (showFilePicker) {
         GetContent(
             type = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
@@ -136,6 +129,12 @@ fun ExcelUploadScreen(
     }
 }
 
+/**
+ * Composable that launches the system file picker for Excel files
+ *
+ * @param type MIME type of the file to select
+ * @param onResult Callback with the selected file's URI
+ */
 @Composable
 fun GetContent(
     type: String,

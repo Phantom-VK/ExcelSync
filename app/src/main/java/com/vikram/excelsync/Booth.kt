@@ -2,6 +2,8 @@ package com.vikram.excelsync
 
 import android.net.Uri
 
+
+//This is temp data class, can change as per requirement
 data class Booth(
     val name:String = "",
     val id:String = "",
