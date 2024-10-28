@@ -107,14 +107,16 @@ class ExcelToFirebaseUploader(
                         val booth = Booth(
                             name = row.getCell(0)?.stringCellValue ?: "",
                             id = row.getCell(1)?.stringCellValue ?: "",
-                            latitude = row.getCell(2)?.numericCellValue ?: 0.0,
-                            longitude = row.getCell(3)?.numericCellValue ?: 0.0,
-                            district = row.getCell(4)?.stringCellValue ?: "",
-                            taluka = row.getCell(5)?.stringCellValue ?: "",
-                            bloName = row.getCell(6)?.stringCellValue ?: "",
-                            bloContact = row.getCell(7)?.numericCellValue?.toLong().toString()
-                            //BLO Contact will be as long in excelsheet but we need it as a string
-                        )
+                            bloName = row.getCell(2)?.stringCellValue ?: "",
+                            bloContact = row.getCell(3)?.numericCellValue?.toLong().toString(),
+                            city = row.getCell(4)?.stringCellValue ?: "",
+                            district = row.getCell(5)?.stringCellValue ?: "",
+                            taluka = row.getCell(6)?.stringCellValue ?: "",
+                            latitude = row.getCell(7)?.numericCellValue ?: 0.0,
+                            longitude = row.getCell(8)?.numericCellValue ?: 0.0,
+
+
+                            )
 
                         // Validate required fields
                         if (booth.id.isBlank() || booth.district.isBlank()) {
@@ -125,7 +127,7 @@ class ExcelToFirebaseUploader(
                         // Upload booth data to Firebase
                         database
                             .child(booth.district)
-                            .child(booth.name)
+                            .child(booth.id)
                             .setValue(booth)
                             .await()
 
